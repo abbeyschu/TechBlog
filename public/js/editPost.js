@@ -3,8 +3,8 @@ const postId = document.querySelector('postId').value;
 const editFormHandler = async function(event) {
   event.preventDefault();
 
-  const title = document.querySelector('editTitle').value;
-  const content = document.querySelector('editContent').value;
+  const title = document.querySelector('#editTitle').value;
+  const content = document.querySelector('#editContent').value;
 
   await fetch(`/api/post/${postId}`, {
     method: 'PUT',
