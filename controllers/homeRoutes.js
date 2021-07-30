@@ -10,7 +10,9 @@ router.get('/', async (req, res) => {
 
     const posts = postData.map((post) => post.get({ plain: true }));
 
-    res.render('allPosts', { posts });
+    res.render('allPosts', { 
+      posts
+     });
   } catch (err) {
     res.status(500).json(err);
   }
@@ -26,7 +28,9 @@ router.get('/post/:id', async (req, res) => {
     if (postData) {
       const post = postData.get({ plain: true });
 
-      res.render('onePost', { post });
+      res.render('onePost', { 
+        post
+      });
     } else {
       res.status(404).end();
     }
@@ -36,7 +40,7 @@ router.get('/post/:id', async (req, res) => {
 });
 
 router.get('/login', (req, res) => {
-  if (req.session.loggedIn) {
+  if (req.session.logged_in) {
     res.redirect('/');
     return;
   }
@@ -45,7 +49,7 @@ router.get('/login', (req, res) => {
 });
 
 router.get('/signup', (req, res) => {
-  if (req.session.loggedIn) {
+  if (req.session.logged_in) {
     res.redirect('/');
     return;
   }

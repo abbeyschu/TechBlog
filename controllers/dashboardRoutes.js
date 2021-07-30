@@ -13,8 +13,8 @@ router.get('/', withAuth, async (req, res) => {
     const posts = postData.map((post) => post.get({ plain: true }));
 
     res.render('myPosts',{
-      posts,
-      logged_in: req.session.logged_in 
+      layout: 'dashboard',
+      posts
     });
   } catch (err) {
     res.redirect('login');
@@ -33,6 +33,7 @@ router.get('/edit/:id', withAuth, async (req, res) => {
       const post = postData.get({ plain: true });
 
       res.render('editPost',{
+        layout: 'dashboard',
         post
       });
     } else {
