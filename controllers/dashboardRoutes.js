@@ -27,6 +27,22 @@ router.get('/new', withAuth, (req, res) => {
   });
 });
 
+router.get('/posts', async (req, res) => {
+  try {
+    const postData = await Post.findAll({
+      include: [Users],
+    });
+
+    const posts = postData.map((post) => post.get({ plain: true }));
+
+    res.render('allPosts', { 
+      posts
+     });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 router.get('/edit/:id', withAuth, async (req, res) => {
   try {
     const postData = await Post.findByPk(req.params.id);
