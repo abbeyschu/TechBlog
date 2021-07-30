@@ -1,10 +1,10 @@
-const postId = document.querySelector('input[name="post-id"]').value;
+const postId = document.querySelector('postId').value;
 
 const editFormHandler = async function(event) {
   event.preventDefault();
 
-  const title = document.querySelector('input[name="post-title"]').value;
-  const content = document.querySelector('textarea[name="post-content"]').value;
+  const title = document.querySelector('editTitle').value;
+  const content = document.querySelector('editContent').value;
 
   await fetch(`/api/post/${postId}`, {
     method: 'PUT',
@@ -30,7 +30,7 @@ const deleteClickHandler = async function() {
 
 document
   .querySelector('#edit-post')
-  .addEventListener('submit', editFormHandler);
+  .addEventListener('click', editFormHandler);
 document
   .querySelector('#delete-button')
   .addEventListener('click', deleteClickHandler);
